@@ -19,6 +19,19 @@ RUN cat password.txt password.txt | vncpasswd && \
   rm password.txt
 # Expose VNC port
 #EXPOSE 5908
+
+# set chinese font support
+RUN cd /usr/share/locales
+#RUN install-language-pack zh_CN
+RUN apt-get install -y language-pack-zh-hans
+RUN apt-get install -y ttf-wqy-zenhei
+
+RUN echo "#LANG="zh_CN.UTF-8"" > /etc/default/locale
+RUN echo '#LANGUAGE="zh_CN:zh"' >> /etc/default/locale
+
+# copy between client and server
+RUN apt-get install autocutsel
+
 RUN echo USER
 
 # Set XDRP to use TightVNC port
