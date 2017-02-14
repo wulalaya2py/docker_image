@@ -1,6 +1,6 @@
 # Start with CUDA base image
 FROM nvidia/cuda:8.0-cudnn5-devel
-MAINTAINER Kai Arulkumaran <design@kaixhin.com>
+MAINTAINER lyc <lyc@meitu.com>
 
 # Install LXDE, VNC server, XRDP and Firefox
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
