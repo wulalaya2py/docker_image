@@ -1,0 +1,12 @@
+FROM 172.16.3.16:5000/lab/offical-instance:base
+
+RUN apt-get install -y software-properties-common && add-apt-repository -y  ppa:eugenesan/ppa && apt-get -y update && \
+  echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+  add-apt-repository -y ppa:webupd8team/java && \
+  apt-get update && \
+  apt-get install -y oracle-java8-installer && \
+  apt-get install -y smartgithg gedit vim git filezilla htop
+
+RUN apt-get install -y chromium-browser chromium-browser-l10n && \
+  sed '$d' /etc/chromium-browser/default > /etc/chromium-browser/default && \
+  echo "CHROMIUM_FLAGS=\"--user-data-dir"\" >> /etc/chromium-browser/default

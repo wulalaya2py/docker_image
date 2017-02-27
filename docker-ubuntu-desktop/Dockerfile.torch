@@ -1,0 +1,8 @@
+FROM 172.16.3.16:5000/lab/offical-instance:common
+
+RUN wget https://download.zerobrane.com/ZeroBraneStudioEduPack-1.50-linux.sh -P ~
+
+RUN sh ~/ZeroBraneStudioEduPack-1.50-linux.sh && rm ~/ZeroBraneStudioEduPack-1.50-linux.sh
+
+RUN git clone https://github.com/torch/distro.git ~/torch --recursive && cd ~/torch && bash install-deps
+RUN cd ~/torch && yes | ./install.sh
