@@ -10,10 +10,14 @@ RUN apt-get update && \
     mkdir /root/.vnc
 RUN apt-get install -y --no-install-recommends  fonts-wqy-microhei language-pack-zh-hant language-pack-gnome-zh-hant
 RUN apt-get install autocutsel
-#RUN apt-get install xrdp
-ADD xstartup /root/.vnc/xstartup
-ADD passwd /root/.vnc/passwd
 
+ENV USER root
+ENV HOME /root
+
+ADD xstartup /root/.vnc/xstartup
+RUN chmod 777 /root/.vnc/xstartup
+
+ADD passwd.txt /root/.vnc/passwd
 RUN chmod 600 /root/.vnc/passwd
 
 COPY custom_vnc.sh /opt/
