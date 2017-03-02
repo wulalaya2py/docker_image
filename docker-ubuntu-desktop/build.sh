@@ -14,3 +14,9 @@ sudo docker push 172.16.3.16:5000/lab/offical-instance:theano
 
 sudo docker build -t 172.16.3.16:5000/lab/offical-instance:lasagne -f Dockerfile.lasagne .
 sudo docker push 172.16.3.16:5000/lab/offical-instance:lasagne
+
+sudo docker build -t 172.16.3.16:5000/lab/offical-instance:caffe -f Dockerfile.caffe .
+sudo docker push 172.16.3.16:5000/lab/offical-instance:caffe
+
+sudo docker build -t 172.16.3.16:5000/lab/offical-instance:pytorch -f Dockerfile.pytorch .
+sudo docker push 172.16.3.16:5000/lab/offical-instance:pytorch
