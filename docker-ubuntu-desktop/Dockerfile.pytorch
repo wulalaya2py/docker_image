@@ -15,16 +15,15 @@ RUN curl -o ~/miniconda.sh -O  https://repo.continuum.io/miniconda/Miniconda3-4.
      ~/miniconda.sh -b -p /opt/conda && \
      rm ~/miniconda.sh && \
      /opt/conda/bin/conda install conda-build && \
-     /opt/conda/bin/conda create -y --name pytorch-py27 python=2.7 numpy scipy ipython mkl&& \
+     /opt/conda/bin/conda create -y --name pytorch-py35 python=3.5.2 numpy scipy ipython mkl&& \
      /opt/conda/bin/conda clean -ya
-ENV PATH /opt/conda/envs/pytorch-py27/bin:$PATH
-RUN conda install --name pytorch-py27 -c soumith magma-cuda80
+ENV PATH /opt/conda/envs/pytorch-py35/bin:$PATH
+RUN conda install --name pytorch-py35 -c soumith magma-cuda80
 # This must be done before pip so that requirements.txt is available
-WORKDIR /opt/pytorch
-COPY . .
+RUN mkdir /opt && git clone https://github.com/pytorch/pytorch.git /opt/pytorch && cd /opt/pytorch
 
 RUN cat requirements.txt | xargs -n1 pip install --no-cache-dir && \
     TORCH_CUDA_ARCH_LIST="3.5 5.2 6.0 6.1+PTX" TORCH_NVCC_FLAGS="-Xfatbin -compress-all" \
-    CMAKE_LIBRARY_PATH=/opt/conda/envs/pytorch-py27/lib \
-    CMAKE_INCLUDE_PATH=/opt/conda/envs/pytorch-py27/include \
+    CMAKE_LIBRARY_PATH=/opt/conda/envs/pytorch-py35/lib \
+    CMAKE_INCLUDE_PATH=/opt/conda/envs/pytorch-py35/include \
     pip install -v .
