@@ -43,7 +43,7 @@ RUN cd /root/caffe && \
 # Make and move into build directory
   mkdir build && cd build && \
 # CMake
-  cmake -DUSE_NCCL=ON .. && \
+  cmake .. && \
 # Make
   make -j"$(nproc)" all && \
   make install
