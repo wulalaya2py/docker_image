@@ -1,10 +1,8 @@
 FROM kaixhin/cuda-torch:latest
 MAINTAINER heyflypig <heyflypig@gmail.com>
 
-RUN luarocks install https://raw.githubusercontent.com/clementfarabet/async/master/async-scm-1.rockspec
-RUN luarocks install https://raw.githubusercontent.com/diegonehab/luasocket/master/luasocket-scm-0.rockspec
-RUN luarocks install https://raw.githubusercontent.com/szym/display/master/display-scm-0.rockspec
-RUN luarocks install hhttps://raw.githubusercontent.com/torch/nngraph/master/nngraph-scm-1.rockspec
+RUN luarocks install async
+RUN luarocks install display
 
 COPY run_host_train.sh /root/run_host_train.sh
 

@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-cd $2
+echo $1
+echo $2
+echo $3
+echo $4
 
-chmod +x train.sh
-/bin/bash train.sh "$@"
+cd $1
+/bin/bash $3 > $1/$2.txt
