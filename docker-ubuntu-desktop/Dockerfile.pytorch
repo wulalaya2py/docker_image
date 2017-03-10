@@ -27,3 +27,5 @@ RUN cd /opt/pytorch && cat requirements.txt | xargs -n1 pip install --no-cache-d
     CMAKE_LIBRARY_PATH=/opt/conda/envs/pytorch-py35/lib \
     CMAKE_INCLUDE_PATH=/opt/conda/envs/pytorch-py35/include \
     pip install -v .
+
+RUN pip install torchvision
