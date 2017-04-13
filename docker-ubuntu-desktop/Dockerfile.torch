@@ -36,6 +36,6 @@ RUN luarocks install cutorch && \
   luarocks install loadcaffe && \
   luarocks install display
 
-RUN  luarocks install nngraph && \
-  luarocks install class && \
-  luarocks install loadcaffe
+RUN  luarocks install nngraph
+RUN  luarocks install class
+RUN  luarocks install loadcaffe

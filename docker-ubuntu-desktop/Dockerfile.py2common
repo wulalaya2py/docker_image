@@ -1,20 +1,28 @@
 FROM 172.16.3.204:5000/lab/offical-instance:common
 
-ADD Anaconda2-4.2.0-Linux-x86_64.sh /root/Anaconda2-4.2.0-Linux-x86_64.sh
-RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
-    /bin/bash /root/Anaconda2-4.2.0-Linux-x86_64.sh -b -p /opt/conda && \
-    rm /root/Anaconda2-4.2.0-Linux-x86_64.sh
-ENV PATH /opt/conda/bin:$PATH
-
-ENV PYCHARM_HOME=/etc/pycharm
+ENV PYCHARM_HOME=/opt/pycharm
 ENV PATH ${PYCHARM_HOME}/bin:$PATH
+
+USER root
 RUN apt-get update &&\
     apt-get install -y \
     wget \
     git \
     libxrender1 \
-    libxtst6 &&\
-    wget https://download.jetbrains.com/python/pycharm-community-2016.2.3.tar.gz -O /tmp/pycharm.tar.gz &&\
-    mkdir ${PYCHARM_HOME} && tar -xzvf /tmp/pycharm.tar.gz -C ${PYCHARM_HOME} --strip=1 &&\
-    wget -P /tmp/ https://bootstrap.pypa.io/get-pip.py && python /tmp/get-pip.py &&\
-    rm -rf /var/lib/apt-lists; rm -rf /tmp/*; apt-get purge wget -y; apt-get autoremove -y
+    libxtst6
+
+RUN wget https://download.jetbrains.com/python/pycharm-community-2016.2.3.tar.gz -O /tmp/pycharm.tar.gz
+RUN mkdir ${PYCHARM_HOME} && tar -xzvf /tmp/pycharm.tar.gz -C ${PYCHARM_HOME} --strip=1
+RUN wget -P /tmp/ https://bootstrap.pypa.io/get-pip.py && python /tmp/get-pip.py
+
+
+ADD Anaconda2-4.2.0-Linux-x86_64.sh /root/Anaconda2-4.2.0-Linux-x86_64.sh
+
+RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh
+RUN /bin/bash /root/Anaconda2-4.2.0-Linux-x86_64.sh -b -p /opt/conda && \
+    rm /root/Anaconda2-4.2.0-Linux-x86_64.sh
+ENV PATH /opt/conda/bin:$PATH
+
+
+
+#wget -P /tmp/ https://bootstrap.pypa.io/get-pip.py && python /tmp/get-pip.py &&\

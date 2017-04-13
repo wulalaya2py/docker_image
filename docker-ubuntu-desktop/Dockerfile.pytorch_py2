@@ -1,16 +1,9 @@
 FROM 172.16.3.204:5000/lab/offical-instance:py2common
 
 
-#RUN conda install --name pytorch-py27 -c soumith magma-cuda80
-# This must be done before pip so that requirements.txt is available
-#RUN git clone https://github.com/pytorch/pytorch.git /opt/pytorch
 
-#RUN cd /opt/pytorch && export CMAKE_PREFIX_PATH=/opt/conda
-#RUN conda install numpy pyyaml mkl setuptools cmake gcc cffi
-#RUN conda install -c soumith magma-cuda80
-#RUN pip install torchvision
-
-RUN pip install http://download.pytorch.org/whl/cu80/torch-0.1.11.post5-cp27-none-linux_x86_64.whl
+ADD torch-0.1.11.post5-cp27-none-linux_x86_64.whl /tmp/torch-0.1.11.post5-cp27-none-linux_x86_64.whl
+RUN pip install /tmp/torch-0.1.11.post5-cp27-none-linux_x86_64.whl
 RUN pip install torchvision
 
 # Install Python server and client

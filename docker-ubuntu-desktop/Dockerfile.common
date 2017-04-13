@@ -7,7 +7,10 @@ RUN apt-get install -y software-properties-common && add-apt-repository -y  ppa:
   apt-get install -y oracle-java8-installer  &&\
   apt-get install oracle-java8-set-default && \
   apt-get install -y smartgithg gedit vim git filezilla htop
-
+ENV JAVA_HOME="/usr/java/jdk1.8.0_121"
+ENV PATH="$PATH:$JAVA_HOME/bin:$JRE_HOME/bin"
+ENV JRE_HOME="$JAVA_HOME/jre"
+ENV CLASSPATH=".:$JAVA_HOME/lib:$JRE_HOME/lib"
 
 
 
