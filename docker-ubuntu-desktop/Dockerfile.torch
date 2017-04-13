@@ -1,8 +1,9 @@
-FROM 172.16.3.204:5000/lab/offical-instance:common
+FROM 172.16.3.204:5000/lab/offical-instance:py2common
 
-RUN wget https://download.zerobrane.com/ZeroBraneStudioEduPack-1.50-linux.sh -P ~
+RUN apt-get install -y wget
+RUN wget https://download.zerobrane.com/ZeroBraneStudioEduPack-1.50-linux.sh -P /root/
 
-RUN sh ~/ZeroBraneStudioEduPack-1.50-linux.sh && rm ~/ZeroBraneStudioEduPack-1.50-linux.sh
+RUN sh /root/ZeroBraneStudioEduPack-1.50-linux.sh && rm /root/ZeroBraneStudioEduPack-1.50-linux.sh
 
 RUN apt-get install -y libprotobuf-dev protobuf-compiler
 
@@ -34,3 +35,7 @@ RUN luarocks install cutorch && \
   luarocks install cudnn && \
   luarocks install loadcaffe && \
   luarocks install display
+
+RUN  luarocks install nngraph && \
+  luarocks install class && \
+  luarocks install loadcaffe
