@@ -16,13 +16,14 @@ RUN mkdir ${PYCHARM_HOME} && tar -xzvf /tmp/pycharm.tar.gz -C ${PYCHARM_HOME} --
 RUN wget -P /tmp/ https://bootstrap.pypa.io/get-pip.py && python /tmp/get-pip.py
 
 
+
+
 ADD Anaconda2-4.2.0-Linux-x86_64.sh /root/Anaconda2-4.2.0-Linux-x86_64.sh
 
 RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh
 RUN /bin/bash /root/Anaconda2-4.2.0-Linux-x86_64.sh -b -p /opt/conda && \
-    rm /root/Anaconda2-4.2.0-Linux-x86_64.sh
+
 ENV PATH /opt/conda/bin:$PATH
 
 
-
-#wget -P /tmp/ https://bootstrap.pypa.io/get-pip.py && python /tmp/get-pip.py &&\
+RUN rm /tmp/get-pip.py /tmp/pycharm.tar.gz /root/Anaconda2-4.2.0-Linux-x86_64.sh
