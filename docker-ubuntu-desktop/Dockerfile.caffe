@@ -1,7 +1,8 @@
-FROM 172.16.3.204:5000/lab/offical-instance:common
+FROM 172.16.3.204:5000/lab/offical-instance:py2common
 
 # Install git, wget, bc and dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update
+RUN apt-get install -y \
   git \
   wget \
   bc \
