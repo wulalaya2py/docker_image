@@ -1,4 +1,4 @@
-FROM 172.16.3.204:5000/lab/offical-instance:caffe
+FROM 172.16.3.204:5000/lab/offical-instance:tensorflow
 
 MAINTAINER heyflypig <heyflypig@gmail.com>
 
