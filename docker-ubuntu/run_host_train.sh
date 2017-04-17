@@ -5,4 +5,4 @@ echo $2
 echo $3
 
 cd $1
-/bin/bash $3 > $1/$2
+/bin/bash $3 > $1/$2 2>&1
