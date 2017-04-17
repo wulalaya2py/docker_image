@@ -26,7 +26,6 @@ sudo docker build -t 172.16.3.204:5000/lab/offical-instance:torch -f Dockerfile.
 sudo docker push 172.16.3.204:5000/lab/offical-instance:torch
 
 
-
 sudo docker build -t 172.16.3.204:5000/lab/offical-instance:theano -f Dockerfile.theano .
 sudo docker push 172.16.3.204:5000/lab/offical-instance:theano
 
