@@ -9,3 +9,4 @@ RUN pip install torchvision
 # Install Python server and client
 RUN pip install visdom
 RUN rm /tmp/torch-0.1.11.post5-cp27-none-linux_x86_64.whl
+
