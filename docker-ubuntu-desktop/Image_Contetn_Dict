@@ -1,0 +1,24 @@
+1. base：
+包含默认ubuntu14.04镜像 cuda
+2. common:
+base gedit vim git smartgit ﬁlezilla atom
+3. py2common:
+common anaconda(2.7version) matplotlib(pip安装) sklearn(pip安装) pycharm
+4. py3common:
+common anaconda(3.6version) matplotlib(pip安装) sklearn(pip安装) pycharm
+5. pytorch_py2：
+py2common pytorch(python 2.7) visdom(https://github.com/facebookresearch/visdom)
+6. pytorch_py3:
+py3common pytorch(python 3.6)
+官方镜像
+visdom(https://github.com/facebookresearch/visdom)
+7. torch：
+py2common torch display(luarocks install https://raw.githubusercontent.com/szym/display/master/display-scm-0.rockspec) zerobrane+torch依赖(http://notebook.kulchenko.com/zerobrane/torch-debuggingwith-zerobrane-studio) luarocks install nngraph luarocks install class luarocks install loadcaffe pycharm lua插件
+8. caffe:
+py2common caffe matlab 2016b
+9. tensorﬂow(1.1):
+py2common tensorﬂow 1.1.0
+10. matconvnet:
+py2common matconvnet(https://github.com/vlfeat/matconvnet) matlab 2016b
+11. All in One:
+pytorch_py2 torch caffe tensorﬂow
