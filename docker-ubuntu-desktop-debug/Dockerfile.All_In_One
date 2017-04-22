@@ -1,0 +1,120 @@
+FROM 172.16.3.204:5000/lab/offical-instance:py2common
+
+
+RUN apt-get install -y wget
+RUN wget https://download.zerobrane.com/ZeroBraneStudioEduPack-1.50-linux.sh -P /root/
+
+RUN sh /root/ZeroBraneStudioEduPack-1.50-linux.sh && rm /root/ZeroBraneStudioEduPack-1.50-linux.sh
+
+RUN apt-get install -y libprotobuf-dev protobuf-compiler
+
+RUN git clone https://github.com/torch/distro.git /root/torch --recursive && cd /root/torch && \
+  bash install-deps
+
+# Run Torch7 installation scripts
+RUN cd /root/torch && \
+# Run without nvcc to prevent timeouts
+  sed -i 's/path_to_nvcc=$(which nvcc)/path_to_nvcc=$(which no_nvcc)/g' install.sh && \
+  sed -i 's,path_to_nvcc=/usr/local/cuda/bin/nvcc,path_to_nvcc=,g' install.sh && \
+  ./install.sh
+
+# Export environment variables manually
+ENV LUA_PATH='/root/.luarocks/share/lua/5.1/?.lua;/root/.luarocks/share/lua/5.1/?/init.lua;/root/torch/install/share/lua/5.1/?.lua;/root/torch/install/share/lua/5.1/?/init.lua;./?.lua;/root/torch/install/share/luajit-2.1.0-beta1/?.lua;/usr/local/share/lua/5.1/?.lua;/usr/local/share/lua/5.1/?/init.lua'
+ENV LUA_CPATH='/root/.luarocks/lib/lua/5.1/?.so;/root/torch/install/lib/lua/5.1/?.so;./?.so;/usr/local/lib/lua/5.1/?.so;/usr/local/lib/lua/5.1/loadall.so'
+ENV PATH=/root/torch/install/bin:$PATH
+ENV LD_LIBRARY_PATH=/root/torch/install/lib:$LD_LIBRARY_PATH
+ENV DYLD_LIBRARY_PATH=/root/torch/install/lib:$DYLD_LIBRARY_PATH
+ENV LUA_CPATH='/root/torch/install/lib/?.so;'$LUA_CPATH
+
+
+# Restore Torch7 installation script
+RUN cd /root/torch && sed -i 's/path_to_nvcc=$(which no_nvcc)/path_to_nvcc=$(which nvcc)/g' install.sh
+
+# Install CUDA libraries
+RUN luarocks install cutorch && \
+  luarocks install cunn && \
+  luarocks install cudnn && \
+  luarocks install loadcaffe && \
+  luarocks install display
+
+RUN  luarocks install nngraph
+RUN  luarocks install class
+RUN  luarocks install loadcaffe
+
+
+# Install git, wget, bc and dependencies
+RUN apt-get update
+RUN apt-get install -y \
+  git \
+  wget \
+  bc \
+  cmake \
+  libatlas-base-dev \
+  libatlas-dev \
+  libboost-all-dev \
+  libopencv-dev \
+  libprotobuf-dev \
+  libgoogle-glog-dev \
+  libgflags-dev \
+  protobuf-compiler \
+  libhdf5-dev \
+  libleveldb-dev \
+  liblmdb-dev \
+  libsnappy-dev \
+  python-dev \
+  python-pip \
+  python-numpy \
+  gfortran > /dev/null
+
+# Install NCCL for multi-GPU communication
+RUN wget https://github.com/NVIDIA/nccl/releases/download/v1.2.3-1%2Bcuda8.0/libnccl1_1.2.3-1.cuda8.0_amd64.deb && \
+  dpkg -i libnccl1_1.2.3-1.cuda8.0_amd64.deb && \
+  rm libnccl1_1.2.3-1.cuda8.0_amd64.deb && \
+  wget https://github.com/NVIDIA/nccl/releases/download/v1.2.3-1%2Bcuda8.0/libnccl-dev_1.2.3-1.cuda8.0_amd64.deb && \
+  dpkg -i libnccl-dev_1.2.3-1.cuda8.0_amd64.deb && \
+  rm libnccl-dev_1.2.3-1.cuda8.0_amd64.deb
+
+# Clone Caffe repo and move into it
+RUN cd /root && git clone https://github.com/BVLC/caffe.git && cd caffe && \
+pip install packaging && \
+pip install appdirs && \
+# Install python dependencies
+  cat python/requirements.txt | xargs -n1 pip install
+
+# Move into Caffe repo
+RUN cd /root/caffe && \
+# Make and move into build directory
+  mkdir build && cd build && \
+# CMake
+  cmake -DUSE_NCCL=ON .. && \
+# Make
+  make -j"$(nproc)" all && \
+  make install
+
+# Add to Python path
+ENV PYTHONPATH=/root/caffe/python:$PYTHONPATH
+
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        build-essential \
+        curl \
+        libfreetype6-dev \
+        libpng12-dev \
+        libzmq3-dev \
+        pkg-config \
+        python \
+        python-dev \
+        rsync \
+        software-properties-common \
+        unzip \
+        && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+ADD tensorflow_gpu-1.1.0rc1-cp27-none-linux_x86_64.whl /tmp/tensorflow_gpu-1.1.0rc1-cp27-none-linux_x86_64.whl
+RUN pip install /tmp/tensorflow_gpu-1.1.0rc1-cp27-none-linux_x86_64.whl && \
+    rm /tmp/tensorflow_gpu-1.1.0rc1-cp27-none-linux_x86_64.whl
+
+ENV LD_LIBRARY_PATH /usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
+
+RUN rm /tmp/tensorflow_gpu-1.1.0rc1-cp27-none-linux_x86_64.whl

@@ -1,0 +1,24 @@
+FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu14.04
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV USER root
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends ubuntu-desktop && \
+    apt-get install -y gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal && \
+    apt-get install -y tightvncserver && \
+    mkdir /root/.vnc
+RUN apt-get install -y --no-install-recommends  fonts-wqy-microhei language-pack-zh-hant language-pack-gnome-zh-hant
+RUN apt-get install autocutsel
+
+ENV USER root
+ENV HOME /root
+
+ADD xstartup /root/.vnc/xstartup
+RUN chmod 777 /root/.vnc/xstartup
+
+#ADD passwd.txt /root/.vnc/passwd
+#RUN chmod 600 /root/.vnc/passwd
+
+COPY custom_vnc.sh /opt/
+RUN chmod +x /opt/custom_vnc.sh
