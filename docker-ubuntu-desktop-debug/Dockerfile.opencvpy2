@@ -1,4 +1,4 @@
-FROM 172.16.3.204:5000/lab/offical-instance:py2common
+FROM 172.16.3.204:5000/lab/offical-instance-debug:py2common
 
 ENV CUDA_ROOT /usr/local/cuda/bin
 

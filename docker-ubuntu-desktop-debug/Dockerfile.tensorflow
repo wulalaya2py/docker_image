@@ -1,4 +1,4 @@
-FROM 172.16.3.204:5000/lab/offical-instance:py2common
+FROM 172.16.3.204:5000/lab/offical-instance-debug:py2common
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \

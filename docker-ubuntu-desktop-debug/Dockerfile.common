@@ -1,4 +1,4 @@
-FROM 172.16.3.204:5000/lab/offical-instance:base
+FROM 172.16.3.204:5000/lab/offical-instance-debug:base
 
 RUN apt-get install -y software-properties-common && add-apt-repository -y  ppa:eugenesan/ppa && apt-get -y update && \
   echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
