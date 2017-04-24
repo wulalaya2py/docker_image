@@ -3,6 +3,7 @@ FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu14.04
 ENV DEBIAN_FRONTEND noninteractive
 ENV USER root
 
+ADD
 RUN apt-get update && \
     apt-get install -y --no-install-recommends ubuntu-desktop && \
     apt-get install -y gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal && \

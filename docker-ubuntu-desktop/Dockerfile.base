@@ -17,8 +17,8 @@ ENV HOME /root
 ADD xstartup /root/.vnc/xstartup
 RUN chmod 777 /root/.vnc/xstartup
 
-#ADD passwd.txt /root/.vnc/passwd
-#RUN chmod 600 /root/.vnc/passwd
+ADD passwd.txt /root/.vnc/passwd
+RUN chmod 600 /root/.vnc/passwd
 
 COPY custom_vnc.sh /opt/
 RUN chmod +x /opt/custom_vnc.sh

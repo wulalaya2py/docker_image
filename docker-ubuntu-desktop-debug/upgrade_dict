@@ -1,0 +1,39 @@
+
+
+sudo docker tag 172.16.3.204:5000/lab/offical-instance-debug:base 172.16.3.204:5000/lab/offical-instance:base
+sudo docker push 172.16.3.204:5000/lab/offical-instance:base
+
+sudo docker tag 172.16.3.204:5000/lab/offical-instance-debug:common  172.16.3.204:5000/lab/offical-instance:common
+sudo docker push 172.16.3.204:5000/lab/offical-instance:common
+
+sudo docker tag 172.16.3.204:5000/lab/offical-instance-debug:py2common 172.16.3.204:5000/lab/offical-instance:py2common
+sudo docker push 172.16.3.204:5000/lab/offical-instance:py2common
+
+sudo docker tag 172.16.3.204:5000/lab/offical-instance-debug:py3common 172.16.3.204:5000/lab/offical-instance:py3common
+sudo docker push 172.16.3.204:5000/lab/offical-instance:py3common
+
+sudo docker tag 172.16.3.204:5000/lab/offical-instance-debug:pytorch_py2 172.16.3.204:5000/lab/offical-instance:pytorch_py2
+sudo docker push 172.16.3.204:5000/lab/offical-instance:pytorch_py2
+
+sudo docker tag 172.16.3.204:5000/lab/offical-instance-debug:pytorch_py3 172.16.3.204:5000/lab/offical-instance:pytorch_py3
+sudo docker push 172.16.3.204:5000/lab/offical-instance:pytorch_py3
+
+sudo docker tag 172.16.3.204:5000/lab/offical-instance-debug:tensorflow 172.16.3.204:5000/lab/offical-instance:tensorflow
+sudo docker push 172.16.3.204:5000/lab/offical-instance:tensorflow
+
+
+sudo docker tag 172.16.3.204:5000/lab/offical-instance-debug:torch 172.16.3.204:5000/lab/offical-instance:torch
+sudo docker push 172.16.3.204:5000/lab/offical-instance:torch
+
+
+sudo docker tag 172.16.3.204:5000/lab/offical-instance-debug:theano 172.16.3.204:5000/lab/offical-instance:theano
+sudo docker push 172.16.3.204:5000/lab/offical-instance:theano
+
+sudo docker tag 172.16.3.204:5000/lab/offical-instance-debug:lasagne 172.16.3.204:5000/lab/offical-instance:lasagne
+sudo docker push 172.16.3.204:5000/lab/offical-instance:lasagne
+
+sudo docker tag 172.16.3.204:5000/lab/offical-instance-debug:caffe 172.16.3.204:5000/lab/offical-instance:caffe
+sudo docker push 172.16.3.204:5000/lab/offical-instance:caffe
+
+sudo docker tag 172.16.3.204:5000/lab/offical-instance-debug:pytorch 172.16.3.204:5000/lab/offical-instance:pytorch
+sudo docker push 172.16.3.204:5000/lab/offical-instance:pytorch

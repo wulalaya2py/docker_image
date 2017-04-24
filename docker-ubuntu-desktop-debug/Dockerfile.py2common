@@ -1,4 +1,4 @@
-FROM 172.16.3.204:5000/lab/offical-instance-debug:common
+FROM 172.16.3.204:5000/lab/offical-instance:common
 
 ENV PYCHARM_HOME=/opt/pycharm
 ENV PATH ${PYCHARM_HOME}/bin:$PATH
@@ -28,5 +28,26 @@ RUN /bin/bash /root/Anaconda2-4.2.0-Linux-x86_64.sh -b -p /opt/conda
 
 
 RUN rm /tmp/get-pip.py /tmp/pycharm.tar.gz /root/Anaconda2-4.2.0-Linux-x86_64.sh
-RUN apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+
+
+RUN apt-get update -y
+RUN apt-get install -y build-essential cmake libgtk2.0-dev pkg-config Python-dev python-numpy --no-install-recommends
+
+RUN apt-get install -y libavcodec-dev --no-install-recommends
+RUN apt-get install -y libavformat-dev --no-install-recommends
+RUN apt-get install -y libswscale-dev --no-install-recommends
+RUN apt-get install -y libv4l-dev --no-install-recommends
+
+COPY ocv /opt/
+
+
+RUN cd /opt/opencv-2.4.11 && \
+    mkdir -p /opt/opencv-2.4.11/release &&    \
+    cd /opt/opencv-2.4.11/release
+WORKDIR /opt/opencv-2.4.11/release
+
+RUN cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D CUDA_ARCH_BIN=3.0 -D CUDA_ARCH_PTX=3.0 -D WITH_CUDA=ON -D WITH_V4L=ON ..
+RUN make -j8  install
+
+RUN  cp  /opt/opencv-2.4.11/release/lib/cv2.so /opt/conda/lib/python2.7/site-packages/cv2.so
+

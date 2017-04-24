@@ -1,4 +1,4 @@
-FROM 172.16.3.204:5000/lab/offical-instance-debug:pytorch_py2
+FROM 172.16.3.204:5000/lab/offical-instance:py2common
 
 
 
@@ -6,7 +6,7 @@ ADD torch-0.1.11.post5-cp27-none-linux_x86_64.whl /tmp/torch-0.1.11.post5-cp27-n
 RUN pip install /tmp/torch-0.1.11.post5-cp27-none-linux_x86_64.whl
 RUN pip install torchvision
 
-# Install Python server and client
+
 RUN pip install visdom
 RUN rm /tmp/torch-0.1.11.post5-cp27-none-linux_x86_64.whl
 
