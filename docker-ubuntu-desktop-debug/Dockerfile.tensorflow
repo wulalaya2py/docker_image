@@ -1,4 +1,4 @@
-FROM 172.16.3.204:5000/lab/offical-instance:py2common
+FROM 172.16.3.205:5000/lab/offical-instance:py2common
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
@@ -16,13 +16,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-ADD tensorflow_gpu-1.1.0rc1-cp27-none-linux_x86_64.whl /tmp/tensorflow_gpu-1.1.0rc1-cp27-none-linux_x86_64.whl
+COPY tensorflow_gpu-1.1.0rc1-cp27-none-linux_x86_64.whl /tmp/
 RUN pip install /tmp/tensorflow_gpu-1.1.0rc1-cp27-none-linux_x86_64.whl && \
     rm /tmp/tensorflow_gpu-1.1.0rc1-cp27-none-linux_x86_64.whl
 
 ENV LD_LIBRARY_PATH /usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH
 
-RUN rm /tmp/* -rf
-
-RUN apt-get clean && \
-    rm -rf /var/lib/apt/lists/*

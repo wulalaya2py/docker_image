@@ -1,0 +1,13 @@
+FROM nvidia/cuda:8.0-cudnn5-devel-centos6
+
+RUN yum install fontforge -y
+
+RUN yum groupinstall Desktop -y
+
+RUN yum install tigervnc tigervnc-server -y
+
+ENV USER root
+ENV HOME /root
+
+COPY custom_vnc.sh /opt/
+RUN chmod +x /opt/custom_vnc.sh

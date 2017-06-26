@@ -15,3 +15,21 @@ gnome-settings-daemon &
 metacity &
 nautilus &
 gnome-terminal &
+
+
+
+{
+    "id": "gpu-docker-test",
+    "cmd": "echo $HOST && while [ true ]; do nvidia-smi; sleep 60; done",
+     "acceptedResourceRoles":["slave_public", "*"],
+    "cpus": 0.1,
+    "mem": 129.0,
+    "gpus": 1,
+    "instances": 1,
+    "container": {
+        "type": "MESOS",
+        "mesos": {
+            "image": "lab/nvidia/cuda"
+        }
+    }
+}

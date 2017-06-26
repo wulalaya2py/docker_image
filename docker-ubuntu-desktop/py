@@ -1,0 +1,79 @@
+Image	Cmd	Size
+3775224e8be	123456	303.3 MB
+1c161b38729	/bin/sh -c pip install future --upgrade	2.8 MB
+81e58744376	/bin/sh -c #(nop) WORKDIR /root/	0 B
+30e317e3a96	/bin/sh -c cp /opt/opencv-2.4.11/release/lib/cv2.so /opt/conda/lib/python2.7/site-packages/cv2.so	511 KB
+a0eea7ff9a9	/bin/sh -c make -j8 install	522.5 MB
+c5f3d327330	/bin/sh -c cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D CUDA_ARCH_BIN=3.0 -D CUDA_ARCH_PTX=3.0 -D WITH_CUDA=ON -D WITH_V4L=ON ..	1.0 MB
+d29585ffb2c	/bin/sh -c #(nop) WORKDIR /opt/opencv-2.4.11/release	0 B
+8d71647014b	/bin/sh -c cd /opt/opencv-2.4.11 && mkdir -p /opt/opencv-2.4.11/release && cd /opt/opencv-2.4.11/release	146 B
+5bad3021d62	/bin/sh -c #(nop) COPY dir:36e5536006f46ab5466e071ffa579d74c19f5d18c9592aaa7f7a29bfbf62e5fc in /opt/	89.0 MB
+c8383fa7be2	/bin/sh -c apt-get install -y libv4l-dev --no-install-recommends	1.7 MB
+9676e7ddb19	/bin/sh -c apt-get install -y libswscale-dev --no-install-recommends	1.8 MB
+84d87563ea1	/bin/sh -c apt-get install -y libavformat-dev --no-install-recommends	2.9 MB
+547c2c3add5	/bin/sh -c apt-get install -y libavcodec-dev --no-install-recommends	10.1 MB
+6706cb8a033	/bin/sh -c apt-get install -y build-essential cmake libgtk2.0-dev pkg-config Python-dev python-numpy --no-install-recommends	52.9 MB
+790c8787561	/bin/sh -c apt-get update -y	22.6 MB
+28524d2d8d6	/bin/sh -c rm /tmp/get-pip.py /tmp/pycharm.tar.gz /root/Anaconda2-4.2.0-Linux-x86_64.sh	222 B
+d4e720d11d7	/bin/sh -c /bin/bash /root/Anaconda2-4.2.0-Linux-x86_64.sh -b -p /opt/conda	542.8 MB
+75827bdfa39	/bin/sh -c #(nop) ENV PATH=/opt/conda/bin:/opt/pycharm/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/java/jdk1.8.0_121/bin:/bin	0 B
+6adaeb48383	/bin/sh -c echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh	185 B
+0bb7411c1b6	/bin/sh -c #(nop) ADD file:83d485f0c44c42ec2c83f567f1ae66bcb5932a86cbdea07233e1c91fc6d74c57 in /root/Anaconda2-4.2.0-Linux-x86_64.sh	466.3 MB
+4c3bafde388	/bin/sh -c wget -P /tmp/ https://bootstrap.pypa.io/get-pip.py && python /tmp/get-pip.py	6.2 MB
+e2ec8f983af	/bin/sh -c mkdir ${PYCHARM_HOME} && tar -xzvf /tmp/pycharm.tar.gz -C ${PYCHARM_HOME} --strip=1	213.9 MB
+10a21d9aee8	/bin/sh -c wget https://download.jetbrains.com/python/pycharm-community-2016.2.3.tar.gz -O /tmp/pycharm.tar.gz	213.4 MB
+0de480a203f	/bin/sh -c apt-get update && apt-get install -y wget git libxrender1 libxtst6	22.6 MB
+dabdf36e710	/bin/sh -c #(nop) USER [root]	0 B
+f8994666252	/bin/sh -c #(nop) ENV PATH=/opt/pycharm/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/java/jdk1.8.0_121/bin:/bin	0 B
+13b30fae74d	/bin/sh -c #(nop) ENV PYCHARM_HOME=/opt/pycharm	0 B
+2ef03f6ee2b	/bin/sh -c apt-get clean	0 B
+712ed1e3dc4	/bin/sh -c rm -rf /var/lib/apt-lists; rm -rf /tmp/*;	0 B
+92492d70dfe	/bin/sh -c rm /root/sublime-text_build-3126_amd64.deb	155 B
+db699821e51	/bin/sh -c apt-get remove --purge evince -y	804 KB
+498f5d378a4	/bin/sh -c dpkg -i /root/sublime-text_build-3126_amd64.deb	13.4 MB
+9af23c357b7	/bin/sh -c #(nop) ADD file:d6a9f65ab07df4ecd0203713b6853d3d7d7178a3f1d5d622219117098f7057dc in /root/	7.7 MB
+0a8eb2d493c	/bin/sh -c apt-get install -y okular	118.3 MB
+7e51376727f	/bin/sh -c apt-get update -y	22.6 MB
+e49de9ca9ed	/bin/sh -c apt-get install -y chromium-browser chromium-browser-l10n && sed '$d' /etc/chromium-browser/default > /etc/chromium-browser/default && echo "CHROMIUM_FLAGS=\"--user-data-dir"\" >> /etc/chromium-browser/default	87.6 MB
+c624791003b	/bin/sh -c #(nop) ENV CLASSPATH=.:/usr/java/jdk1.8.0_121/lib:/usr/java/jdk1.8.0_121/jre/lib	0 B
+2ad3f4f2c05	/bin/sh -c #(nop) ENV JRE_HOME=/usr/java/jdk1.8.0_121/jre	0 B
+c8d569511ac	/bin/sh -c #(nop) ENV PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/java/jdk1.8.0_121/bin:/bin	0 B
+8c4e7a719b6	/bin/sh -c #(nop) ENV JAVA_HOME=/usr/java/jdk1.8.0_121	0 B
+7cc1c8df409	/bin/sh -c apt-get install -y software-properties-common && add-apt-repository -y ppa:eugenesan/ppa && apt-get -y update && echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && add-apt-repository -y ppa:webupd8team/java && apt-get update && apt-get install -y oracle-java8-installer && apt-get install oracle-java8-set-default && apt-get install -y smartgithg gedit vim git filezilla htop	446.8 MB
+862a926cd02	/bin/sh -c chmod +x /opt/custom_vnc.sh	335 B
+eeccfaf4cda	/bin/sh -c #(nop) COPY file:9c17b3582ea07f290bf39dc881b7e99a2d394143e6b09408845e5768904234d0 in /opt/	337 B
+486254f9fd9	/bin/sh -c chmod 777 /root/.vnc/xstartup	383 B
+2efe2b2ecc1	/bin/sh -c #(nop) ADD file:b4803e01d2a9cc4d3f152e8e82d074d7093b4a227a95ad7d94d355288af5341f in /root/.vnc/xstartup	383 B
+22d8514bf63	/bin/sh -c #(nop) ENV HOME=/root	0 B
+a8db96ce24f	/bin/sh -c #(nop) ENV USER=root	0 B
+6ecc313fc1e	/bin/sh -c apt-get install autocutsel	1.4 MB
+1ee3843cda9	/bin/sh -c apt-get install -y --no-install-recommends fonts-wqy-microhei language-pack-zh-hant language-pack-gnome-zh-hant	11.5 MB
+b625b0d415b	/bin/sh -c apt-get update && apt-get install -y --no-install-recommends ubuntu-desktop && apt-get install -y gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal && apt-get install -y tightvncserver && mkdir /root/.vnc	394.1 MB
+24ed34aa54c	/bin/sh -c #(nop) ENV USER=root	0 B
+69a5c816baf	/bin/sh -c #(nop) ENV DEBIAN_FRONTEND=noninteractive	0 B
+eb49afed10d	/bin/sh -c apt-get update && apt-get install -y --no-install-recommends libcudnn5=$CUDNN_VERSION-1+cuda8.0 libcudnn5-dev=$CUDNN_VERSION-1+cuda8.0 && rm -rf /var/lib/apt/lists/*	103.4 MB
+9929d694697	/bin/sh -c #(nop) LABEL com.nvidia.cudnn.version=5.1.10	0 B
+338fae97cbd	/bin/sh -c #(nop) ENV CUDNN_VERSION=5.1.10	0 B
+74675ec3fc3	/bin/sh -c echo "deb http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1404/x86_64 /" > /etc/apt/sources.list.d/nvidia-ml.list	259 B
+d480ec839b6	/bin/sh -c #(nop) LABEL maintainer=NVIDIA CORPORATION	0 B
+f7612629e7e	/bin/sh -c #(nop) ENV LIBRARY_PATH=/usr/local/cuda/lib64/stubs:	0 B
+3bfe971d51c	/bin/sh -c apt-get update && apt-get install -y --no-install-recommends cuda-core-$CUDA_PKG_VERSION cuda-misc-headers-$CUDA_PKG_VERSION cuda-command-line-tools-$CUDA_PKG_VERSION cuda-nvrtc-dev-$CUDA_PKG_VERSION cuda-nvml-dev-$CUDA_PKG_VERSION cuda-nvgraph-dev-$CUDA_PKG_VERSION cuda-cusolver-dev-$CUDA_PKG_VERSION cuda-cublas-dev-$CUDA_PKG_VERSION cuda-cufft-dev-$CUDA_PKG_VERSION cuda-curand-dev-$CUDA_PKG_VERSION cuda-cusparse-dev-$CUDA_PKG_VERSION cuda-npp-dev-$CUDA_PKG_VERSION cuda-cudart-dev-$CUDA_PKG_VERSION cuda-driver-dev-$CUDA_PKG_VERSION && rm -rf /var/lib/apt/lists/*	438.6 MB
+d11d94ac170	/bin/sh -c #(nop) LABEL maintainer=NVIDIA CORPORATION	0 B
+8fc4c3937a2	/bin/sh -c #(nop) LABEL com.nvidia.build.id=10914922 com.nvidia.build.ref=eb388104a34793630ab43b7f426210bdd8d8b87f	0 B
+ccee19d07fb	/bin/sh -c #(nop) ENV LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64	0 B
+0aed748d3ad	/bin/sh -c #(nop) ENV PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin	0 B
+b2eb8a23ec4	/bin/sh -c echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf && echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf	185 B
+8db5ca6ce1d	/bin/sh -c echo "/usr/local/cuda/lib64" >> /etc/ld.so.conf.d/cuda.conf && ldconfig	5 KB
+0f3c251957f	/bin/sh -c apt-get update && apt-get install -y --no-install-recommends cuda-nvrtc-$CUDA_PKG_VERSION cuda-nvgraph-$CUDA_PKG_VERSION cuda-cusolver-$CUDA_PKG_VERSION cuda-cublas-$CUDA_PKG_VERSION cuda-cufft-$CUDA_PKG_VERSION cuda-curand-$CUDA_PKG_VERSION cuda-cusparse-$CUDA_PKG_VERSION cuda-npp-$CUDA_PKG_VERSION cuda-cudart-$CUDA_PKG_VERSION && ln -s cuda-8.0 /usr/local/cuda && rm -rf /var/lib/apt/lists/*	416.9 MB
+06389f0347c	/bin/sh -c #(nop) ENV CUDA_PKG_VERSION=8-0=8.0.61-1	0 B
+e0a02e12efc	/bin/sh -c #(nop) LABEL com.nvidia.cuda.version=8.0.61	0 B
+3bb0dadae38	/bin/sh -c #(nop) ENV CUDA_VERSION=8.0.61	0 B
+a106f8ecbd0	/bin/sh -c NVIDIA_GPGKEY_SUM=d1be581509378368edeec8c1eb2958702feedf3bc3d17011adbf24efacce4ab5 && NVIDIA_GPGKEY_FPR=ae09fe4bbd223a84b2ccfce3f60f4b3d7fa2af80 && apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/7fa2af80.pub && apt-key adv --export --no-emit-version -a $NVIDIA_GPGKEY_FPR | tail -n +2 > cudasign.pub && echo "$NVIDIA_GPGKEY_SUM cudasign.pub" | sha256sum -c --strict - && rm cudasign.pub && echo "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64 /" > /etc/apt/sources.list.d/cuda.list	13 KB
+e064b8b8a73	/bin/sh -c #(nop) LABEL com.nvidia.volumes.needed=nvidia_driver	0 B
+8456b8cabe8	/bin/sh -c #(nop) LABEL maintainer=NVIDIA CORPORATION	0 B
+fe8776bd3b1	/bin/sh -c #(nop) CMD ["/bin/bash"]	0 B
+90cc944e2eb	/bin/sh -c mkdir -p /run/systemd && echo 'docker' > /run/systemd/container	162 B
+f3e3dde2fc2	/bin/sh -c sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list	681 B
+4394200c7c5	/bin/sh -c rm -rf /var/lib/apt/lists/*	358 B
+1850b061549	/bin/sh -c set -xe && echo '#!/bin/sh' > /usr/sbin/policy-rc.d && echo 'exit 101' >> /usr/sbin/policy-rc.d && chmod +x /usr/sbin/policy-rc.d && dpkg-divert --local --rename --add /sbin/initctl && cp -a /usr/sbin/policy-rc.d /sbin/initctl && sed -i 's/^exit.*/exit 0/' /sbin/initctl && echo 'force-unsafe-io' > /etc/dpkg/dpkg.cfg.d/docker-apt-speedup && echo 'DPkg::Post-Invoke { "rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true"; };' > /etc/apt/apt.conf.d/docker-clean && echo 'APT::Update::Post-Invoke { "rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true"; };' >> /etc/apt/apt.conf.d/docker-clean && echo 'Dir::Cache::pkgcache ""; Dir::Cache::srcpkgcache "";' >> /etc/apt/apt.conf.d/docker-clean && echo 'Acquire::Languages "none";' > /etc/apt/apt.conf.d/docker-no-languages && echo 'Acquire::GzipIndexes "true"; Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/docker-gzip-indexes && echo 'Apt::AutoRemove::SuggestsImportant "false";' > /etc/apt/apt.conf.d/docker-autoremove-suggests	72 KB
+7e732de6406	/bin/sh -c #(nop) ADD file:c383f1cde338921411168cc34a10e3a221ae55e569768e1551274f8fddc54415 in /	65.7 MB

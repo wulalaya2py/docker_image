@@ -1,53 +1,15 @@
-FROM 172.16.3.204:5000/lab/offical-instance-debug:py2common
+周末两天计划
 
-# Install git, wget, bc and dependencies
-RUN apt-get update
-RUN apt-get install -y \
-  git \
-  wget \
-  bc \
-  cmake \
-  libatlas-base-dev \
-  libatlas-dev \
-  libboost-all-dev \
-  libopencv-dev \
-  libprotobuf-dev \
-  libgoogle-glog-dev \
-  libgflags-dev \
-  protobuf-compiler \
-  libhdf5-dev \
-  libleveldb-dev \
-  liblmdb-dev \
-  libsnappy-dev \
-  python-dev \
-  python-pip \
-  python-numpy \
-  gfortran > /dev/null
+1.周五7点-周六早上9点，备份数据。
+2.周六早上9点到下午两点 搭建ceph集群，rbd块。
+3.下午2点到第二天早上，回迁数据
+4.周六下午搭建zabbix监控,观察rbd性能，如果不理想就回退
+5.周日早上整合云盘，测试计算节点挂载rbd，能被mesos作为PV
 
-# Install NCCL for multi-GPU communication
-RUN wget https://github.com/NVIDIA/nccl/releases/download/v1.2.3-1%2Bcuda8.0/libnccl1_1.2.3-1.cuda8.0_amd64.deb && \
-  dpkg -i libnccl1_1.2.3-1.cuda8.0_amd64.deb && \
-  rm libnccl1_1.2.3-1.cuda8.0_amd64.deb && \
-  wget https://github.com/NVIDIA/nccl/releases/download/v1.2.3-1%2Bcuda8.0/libnccl-dev_1.2.3-1.cuda8.0_amd64.deb && \
-  dpkg -i libnccl-dev_1.2.3-1.cuda8.0_amd64.deb && \
-  rm libnccl-dev_1.2.3-1.cuda8.0_amd64.deb
+风险                          解决方案
+  
+1.rbd不能抗住小文件压力                  回退
+2.nfs挂载rbd设备，云盘不能识别          选用别的文件共享方式
+3.mesos 的volume drive 不能挂载ceph     用nfs
 
-# Clone Caffe repo and move into it
-RUN cd /root && git clone https://github.com/BVLC/caffe.git && cd caffe && \
-pip install packaging && \
-pip install appdirs && \
-# Install python dependencies
-  cat python/requirements.txt | xargs -n1 pip install
-
-# Move into Caffe repo
-RUN cd /root/caffe && \
-# Make and move into build directory
-  mkdir build && cd build && \
-# CMake
-  cmake -DUSE_NCCL=ON .. && \
-# Make
-  make -j"$(nproc)" all && \
-  make install
-
-# Add to Python path
-ENV PYTHONPATH=/root/caffe/python:$PYTHONPATH
+sudo apt-get remove linux-image-4.4.0-75-generic linux-headers-4.4.0-75-generic

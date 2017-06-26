@@ -1,4 +1,4 @@
-FROM 172.16.3.204:5000/lab/offical-instance:py2common
+FROM 172.16.3.205:5000/lab/offical-instance:py2common
 
 # Install git, wget, bc and dependencies
 RUN apt-get update
@@ -9,7 +9,7 @@ RUN apt-get install -y \
   cmake \
   libatlas-base-dev \
   libatlas-dev \
-  libboost-all-dev \
+  libboost1.55-all-dev \
   libopencv-dev \
   libprotobuf-dev \
   libgoogle-glog-dev \
@@ -33,14 +33,14 @@ RUN wget https://github.com/NVIDIA/nccl/releases/download/v1.2.3-1%2Bcuda8.0/lib
   rm libnccl-dev_1.2.3-1.cuda8.0_amd64.deb
 
 # Clone Caffe repo and move into it
-RUN cd /root && git clone https://github.com/BVLC/caffe.git && cd caffe && \
+RUN cd /opt && git clone https://github.com/BVLC/caffe.git && cd caffe && \
 pip install packaging && \
 pip install appdirs && \
 # Install python dependencies
   cat python/requirements.txt | xargs -n1 pip install
 
 # Move into Caffe repo
-RUN cd /root/caffe && \
+RUN cd /opt/caffe && \
 # Make and move into build directory
   mkdir build && cd build && \
 # CMake
@@ -50,4 +50,4 @@ RUN cd /root/caffe && \
   make install
 
 # Add to Python path
-ENV PYTHONPATH=/root/caffe/python:$PYTHONPATH
+ENV PYTHONPATH=/opt/caffe/python:$PYTHONPATH

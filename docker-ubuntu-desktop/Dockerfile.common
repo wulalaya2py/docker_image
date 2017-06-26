@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/myphp/official-instance
+FROM 172.16.3.205:5000/lab/offical-instance:base
 
 RUN apt-get install -y software-properties-common && add-apt-repository -y  ppa:eugenesan/ppa && apt-get -y update && \
   echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
@@ -24,5 +24,5 @@ ADD sublime-text_build-3126_amd64.deb /root/
 RUN dpkg -i /root/sublime-text_build-3126_amd64.deb
 RUN apt-get remove --purge evince -y
 RUN rm /root/sublime-text_build-3126_amd64.deb
-RUN rm -rf /var/lib/apt-lists; rm -rf /tmp/*;
-RUN apt-get clean
+#RUN rm -rf /var/lib/apt-lists; rm -rf /tmp/*;
+#RUN apt-get clean
